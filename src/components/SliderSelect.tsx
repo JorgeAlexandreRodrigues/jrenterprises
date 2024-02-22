@@ -8,8 +8,6 @@ interface SliderSelectProps {
 
 const SliderSelect: React.FC<SliderSelectProps> = ({ data, setData }) => {
 
-  console.log(data)
-  console.log(setData)
   return (
     <>
       <SliderComponent label="Valor Financiamento" min={0} max={1000000} defaultValue={data.vF} value={data.vF} step={1000} onChange={(e: any, value: number | number[]) => {
