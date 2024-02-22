@@ -76,19 +76,13 @@ const Result: React.FC<ResultProps> = ({ data }) => {
   return (
     <Stack>
       <Typography textAlign={'center'}>
-        {/* Estrutura e Montagem = 600 <br />
-        Estrutura e Montagem = € {eMFinal} <br /> */}
         % Redução Estrutura e Montagem = {eMReduction.toFixed(2)} %
       </Typography>
       <Typography textAlign={'center'} >
-        {/* Comissão Gestão = € 210 <br />
-        Comissão Gestão Calculada = € {cGFinal} <br /> */}
         % Redução Comissão Gestão {cGReduction.toFixed(2)} %
       </Typography>
       <Typography textAlign={'center'}>
-        {/* Estrutura e Montagem = 600 <br />
-        Estrutura e Montagem = € {eMFinal} <br /> */}
-        Total Redução = {(totalP-totalR).toFixed(2)} €
+        Total Redução = {(totalP - totalR).toFixed(2)} €
       </Typography>
       <Stack direction='row' justifyContent='center'>
         <Bar data={verticalBarsdata} />

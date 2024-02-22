@@ -9,8 +9,8 @@ function App() {
 
   const [data, setData] = useState({
     vF: 50000,
-    eM: 50000 * 0.005 <= 600 ? 600 : 50000 * 0.005,
-    cG: 50000 * 0.02 <= 210 ? 210 : 50000 * 0.02,
+    eM: 600,
+    cG: 1000
   })
   return (
     <div className="App">
@@ -18,10 +18,10 @@ function App() {
       <Container maxWidth="xl" sx={{ mt: 4 }}>
         <Grid container spacing={5} alignItems='center'>
           <Grid item xs={12} md={6}>
-            <SliderSelect data= {data} setData= {setData} />
+            <SliderSelect data={data} setData={setData} />
           </Grid>
           <Grid item xs={12} md={6}>
-            <Result data= {data} />
+            <Result data={data} />
           </Grid>
         </Grid>
       </Container>
