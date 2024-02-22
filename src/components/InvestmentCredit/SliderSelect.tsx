@@ -1,5 +1,5 @@
 import React from 'react';
-import SliderComponent from './common/SliderComponent';
+import SliderComponent from '../common/SliderComponent';
 
 interface SliderSelectProps {
   data: any; // Define the type of data according to its structure
