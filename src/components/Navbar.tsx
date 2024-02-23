@@ -10,8 +10,15 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import { Link } from 'react-router-dom'; // Import Link from React Router
 
-const pages = ['Crédito Investimento', 'Conta Corrente', 'DOE', 'Livranças', "Micro-Fatoring"];
+const pages = [
+  { name: 'Crédito Investimento', path: '/investment-credit' },
+  { name: 'Conta Corrente', path: '/current-account' },
+  { name: 'DOE', path: '/doe' },
+  { name: 'Livranças', path: '/livrancas' },
+  { name: 'Micro-Fatoring', path: '/micro-factoring' }
+];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
@@ -40,8 +47,8 @@ function ResponsiveAppBar() {
           <Typography
             variant="h6"
             noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
+            component={Link} // Use Link component instead of anchor tag
+            to="/"
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
@@ -85,8 +92,8 @@ function ResponsiveAppBar() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem key={page.name} onClick={handleCloseNavMenu} component={Link} to={page.path}>
+                  <Typography textAlign="center">{page.name}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -113,11 +120,13 @@ function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Button
-                key={page}
+                key={page.name}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
+                component={Link} // Use Link component instead of anchor tag
+                to={page.path}
               >
-                {page}
+                {page.name}
               </Button>
             ))}
           </Box>
