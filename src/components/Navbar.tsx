@@ -16,7 +16,7 @@ const pages = [
   { name: 'Crédito Investimento', path: '/investment-credit' },
   { name: 'Conta Corrente', path: '/current-account' },
   { name: 'DOE', path: '/doe' },
-  { name: 'Livranças', path: '/livrancas' },
+  { name: 'Livrancas', path: '/livrancas' },
   { name: 'Micro-Fatoring', path: '/micro-factoring' }
 ];
 
