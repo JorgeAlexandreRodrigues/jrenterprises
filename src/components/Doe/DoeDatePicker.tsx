@@ -25,7 +25,6 @@ function Label({
     isProOnly,
 }: {
     componentName: string;
-    valueType: string;
     isProOnly?: boolean;
 }) {
     const content = (
@@ -53,7 +52,12 @@ function Label({
     return content;
 }
 
-export default function CommonlyUsedComponents() {
+interface CommonlyUsedComponentsProps {
+    data: any; // Define the type of data according to its structure
+    setData: React.Dispatch<React.SetStateAction<any>>; // Define the type of setData according to its function signature
+}
+
+export default function CommonlyUsedComponents({ data, setData }: CommonlyUsedComponentsProps) {
     const [selectedDate, setSelectedDate] = useState<Date | null>(null);
     const [daysDifference, setDaysDifference] = useState<number | null>(null);
 
@@ -66,6 +70,15 @@ export default function CommonlyUsedComponents() {
         }
     }, [selectedDate]);
 
+    useEffect(() => {
+        if (daysDifference !== null) {
+            setData({
+                ...data,
+                longTerm: daysDifference + 2,
+            });
+        }
+    }, [daysDifference, setData]);
+
     return (
         <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DemoContainer
@@ -73,10 +86,10 @@ export default function CommonlyUsedComponents() {
                     'DatePicker',
                 ]}
             >
-                <DemoItem label={<Label componentName="Data de Vencimento" valueType="date" />}>
+                <DemoItem label={<Label componentName="Data de Vencimento" />}>
                     <DatePicker value={selectedDate} onChange={setSelectedDate} />
                     {daysDifference !== null && (
-                        <div>Number of days difference: {daysDifference}</div>
+                        <div>Número de dias: {daysDifference + 2}</div>
                     )}
                 </DemoItem>
             </DemoContainer>

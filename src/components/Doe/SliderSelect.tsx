@@ -17,7 +17,7 @@ const SliderSelect: React.FC<SliderSelectProps> = ({data, setData}) => {
       }} unit='€' amount={data.vDoe}/>
     <SliderComponent label='Comissão de Contratação' min={0} max={data.vDoe * 0.0030 <= 80 ? 80 : data.vDoe * 0.0030} defaultValue={data.cC} step={5} value={data.cC} onChange={(e: any, value) => setData({...data, cC:value })} unit='€' amount={data.cC}/>
     <SliderComponent label='Desconto Documentos' min={0} max={data.vDoe * 0.0025 <= 75 ? 75 : data.vDoe * 0.0025} defaultValue={data.cD} step={5} value={data.cD} onChange={(e: any, value) => setData({...data, cD:value })} unit='€' amount={data.cD}/>
-    <SliderComponent label='Spread' min={0} max={15} defaultValue={data.iR} step={0.25} value={data.iR} onChange={(e: any, value) => setData({...data, iR:value })} unit='%' amount={data.iR}/>
+    <SliderComponent label='Spread' min={0} max={15} defaultValue={data.interestRate} step={0.25} value={data.interestRate} onChange={(e: any, value) => setData({...data, interestRate:value })} unit='%' amount={data.interestRate}/>
     </>
   )
 }

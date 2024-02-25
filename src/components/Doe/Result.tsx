@@ -29,19 +29,24 @@ interface ResultProps {
     vDoe: number;
     cC: number;
     cD: number;
-    iR: number
+    interestRate: number;
+    longTerm: number;
     // Add other properties if necessary
   };
 }
 
 const Result: React.FC<ResultProps> = ({ data }) => {
-  const { vDoe, cC, cD, iR } = data;
+  const { vDoe, cC, cD, interestRate, longTerm } = data;
   let cCFinal = Math.max(vDoe * 0.0030, 80);
   let cCReduction = (1 - (data.cC / cCFinal)) * 100
   let cDFinal = Math.max(vDoe * 0.0025, 75);
   let cDReduction = (1 - (data.cD / cDFinal)) * 100
-  let totalP = cCFinal + cDFinal;
-  let totalR = data.cC + data.cD;
+  let dailyInterestRate = (data.interestRate / 365) / 100;
+  let totalInterest = (vDoe * dailyInterestRate) * data.longTerm;
+  let totalP = cCFinal + cDFinal + totalInterest;
+  let totalR = data.cC + data.cD + totalInterest;
+
+
 
   const options = {
     responsive: true,
@@ -56,19 +61,19 @@ const Result: React.FC<ResultProps> = ({ data }) => {
     },
   };
 
-  const labels = ['Comissão Contratação', 'Desconto Documentos', 'Total'];
+  const labels = ['Comissão Contratação', 'Desconto Documentos','Juros', 'Total'];
 
   const verticalBarsdata = {
     labels,
     datasets: [
       {
         label: 'Preçário',
-        data: [cCFinal, cDFinal, totalP],
+        data: [cCFinal, cDFinal, totalInterest.toFixed(2), totalP],
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
       },
       {
         label: 'Redução Preçário',
-        data: [data.cC, data.cD, totalR],
+        data: [data.cC, data.cD,totalInterest, totalR],
         backgroundColor: 'rgba(75, 192, 192, 0.5)'
       },
     ],
