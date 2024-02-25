@@ -46,8 +46,6 @@ const Result: React.FC<ResultProps> = ({ data }) => {
   let totalP = cCFinal + cDFinal + totalInterest;
   let totalR = data.cC + data.cD + totalInterest;
 
-
-
   const options = {
     responsive: true,
     plugins: {
@@ -61,19 +59,19 @@ const Result: React.FC<ResultProps> = ({ data }) => {
     },
   };
 
-  const labels = ['Comissão Contratação', 'Desconto Documentos','Juros', 'Total'];
+  const labels = ['Comissão Contratação', 'Desconto Documentos', 'Juros', 'Total'];
 
   const verticalBarsdata = {
     labels,
     datasets: [
       {
         label: 'Preçário',
-        data: [cCFinal, cDFinal, totalInterest.toFixed(2), totalP],
+        data: [cCFinal, cDFinal, totalInterest.toFixed(2), totalP.toFixed(2)],
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
       },
       {
         label: 'Redução Preçário',
-        data: [data.cC, data.cD,totalInterest, totalR],
+        data: [data.cC, data.cD, totalInterest.toFixed(2), totalR.toFixed(2)],
         backgroundColor: 'rgba(75, 192, 192, 0.5)'
       },
     ],
