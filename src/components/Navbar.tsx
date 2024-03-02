@@ -17,7 +17,7 @@ const pages = [
   { name: 'Conta Corrente', path: '/current-account' },
   { name: 'DOE', path: '/doe' },
   { name: 'Livranças', path: '/livrancas' },
-  { name: 'Micro-Fatoring', path: '/micro-factoring' }
+  { name: 'Micro-Factoring', path: '/micro-factoring' }
 ];
 
 function ResponsiveAppBar() {

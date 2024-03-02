@@ -2,7 +2,7 @@ import { Grid } from '@mui/material'
 import React, { useState } from 'react'
 import SliderSelect from '../Doe/SliderSelect'
 import Result from './Result'
-import DoeDatePicker from '../common/DoeDatePicker'
+import CommonDatePicker from '../common/commonDatePicker'
 
 const Doe = () => {
   const [data, setData] = useState({
@@ -17,7 +17,7 @@ const Doe = () => {
     <Grid container spacing={5} alignItems="center">
       <Grid item xs={12} md={6}>
         <SliderSelect data={data} setData={setData} />
-        <DoeDatePicker data={data} setData={setData} />
+        <CommonDatePicker data={data} setData={setData} />
       </Grid>
       <Grid item xs={12} md={6}>
         <Result data={data} />
