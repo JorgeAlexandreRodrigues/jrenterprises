@@ -1,17 +1,18 @@
 import { Grid } from '@mui/material'
 import React, { useState } from 'react'
-import SliderSelect from '../Livrancas/SliderSelect'
+import SliderSelect from './SliderSelect'
 import CommonDatePicker from '../common/commonDatePicker'
-import Result from '../Livrancas/Result'
+import Result from './Result'
 
-const Livrancas = () => {
+const MicroFactoring = () => {
     const [data, setData] = useState({
-        amountLivranca: 10000,
-        processingCommission: 60,
+        microFactoringValue: 30000,
+        commissionFactoring: 300,
+        debtorAnalysisCommission: 30,
         spreadRate: 3,
         longTerm: 1
-    })
 
+    })
     return (
         <Grid container spacing={5} alignItems="center">
             <Grid item xs={12} md={6}>
@@ -21,8 +22,8 @@ const Livrancas = () => {
             <Grid item xs={12} md={6}>
                 <Result data={data} />
             </Grid>
-        </Grid >
+        </Grid>
     )
 }
 
-export default Livrancas
+export default MicroFactoring
