@@ -31,17 +31,19 @@ interface ResultProps {
     cD: number;
     interestRate: number;
     longTerm: number;
+    euribor: number
     // Add other properties if necessary
   };
 }
 
 const Result: React.FC<ResultProps> = ({ data }) => {
-  const { vDoe, cC, cD, interestRate, longTerm } = data;
+  const { vDoe, cC, cD, interestRate, longTerm, euribor } = data;
   let cCFinal = Math.max(vDoe * 0.0030, 80);
-  let cCReduction = (1 - (data.cC / cCFinal)) * 100
+  let cCReduction = (1 - (data.cC / cCFinal)) * 100;
   let cDFinal = Math.max(vDoe * 0.0025, 75);
-  let cDReduction = (1 - (data.cD / cDFinal)) * 100
-  let dailyInterestRate = (data.interestRate / 365) / 100;
+  let cDReduction = (1 - (data.cD / cDFinal)) * 100;
+  let euriborSpread = euribor + interestRate;
+  let dailyInterestRate = ( euriborSpread / 365) / 100;
   let totalInterest = (vDoe * dailyInterestRate) * data.longTerm;
   let totalP = cCFinal + cDFinal + totalInterest;
   let totalR = data.cC + data.cD + totalInterest;
