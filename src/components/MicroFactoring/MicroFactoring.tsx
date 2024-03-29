@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import SliderSelect from './SliderSelect'
 import CommonDatePicker from '../common/commonDatePicker'
 import Result from './Result'
+import CommonEuribor from '../common/commonEuribor'
 
 const MicroFactoring = () => {
     const [data, setData] = useState({
@@ -10,6 +11,7 @@ const MicroFactoring = () => {
         commissionFactoring: 300,
         debtorAnalysisCommission: 30,
         spreadRate: 3,
+        euribor:6,
         longTerm: 1
 
     })
@@ -17,6 +19,7 @@ const MicroFactoring = () => {
         <Grid container spacing={5} alignItems="center">
             <Grid item xs={12} md={6}>
                 <SliderSelect data={data} setData={setData} />
+                <CommonEuribor data={data} setData={setData} />
                 <CommonDatePicker data={data} setData={setData} />
             </Grid>
             <Grid item xs={12} md={6}>

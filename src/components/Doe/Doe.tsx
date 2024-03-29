@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import SliderSelect from '../Doe/SliderSelect'
 import Result from './Result'
 import CommonDatePicker from '../common/commonDatePicker'
+import CommonEuribor from '../common/commonEuribor'
 
 const Doe = () => {
   const [data, setData] = useState({
@@ -10,6 +11,7 @@ const Doe = () => {
     cC: 80,
     cD: 75,
     interestRate: 2,
+    euribor: 6,
     longTerm: 1
   })
 
@@ -17,6 +19,7 @@ const Doe = () => {
     <Grid container spacing={5} alignItems="center">
       <Grid item xs={12} md={6}>
         <SliderSelect data={data} setData={setData} />
+        <CommonEuribor data={data} setData={setData} />
         <CommonDatePicker data={data} setData={setData} />
       </Grid>
       <Grid item xs={12} md={6}>

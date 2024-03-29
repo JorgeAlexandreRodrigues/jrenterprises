@@ -30,15 +30,17 @@ interface ResultProps {
         processingCommission: number;
         spreadRate: number;
         longTerm: number;
+        euribor: number
         // Add other properties if necessary
     };
 }
 
 const Result: React.FC<ResultProps> = ({ data }) => {
-    const { amountLivranca, processingCommission, spreadRate, longTerm } = data;
+    const { amountLivranca, processingCommission, spreadRate, longTerm, euribor } = data;
     let processingCommissionFinal = Math.max(amountLivranca * 0.006, 60);
-    let processingCommissionReduction = (1 - (data.processingCommission / processingCommissionFinal)) * 100
-    let dailyInterestRate = (data.spreadRate / 365) / 100;
+    let processingCommissionReduction = (1 - (data.processingCommission / processingCommissionFinal)) * 100;
+    let euriborSpread = euribor + spreadRate;
+    let dailyInterestRate = (euriborSpread / 365) / 100;
     let totalInterest = (amountLivranca * dailyInterestRate) * data.longTerm;
     let totalPricing = processingCommissionFinal + totalInterest;
     let totalReduce = data.processingCommission + totalInterest;

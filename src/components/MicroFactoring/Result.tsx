@@ -31,15 +31,17 @@ interface ResultProps {
         debtorAnalysisCommission: number;
         spreadRate: number;
         longTerm: number;
+        euribor: number;
         // Add other properties if necessary
     };
 }
 
 const Result: React.FC<ResultProps> = ({ data }) => {
-    const { microFactoringValue, debtorAnalysisCommission, commissionFactoring, spreadRate, longTerm } = data;
+    const { microFactoringValue, debtorAnalysisCommission, commissionFactoring, spreadRate, longTerm, euribor } = data;
     let commissionFactoringFinal = Math.max(microFactoringValue * 0.01, 200);
     let commissionFactoringReduction = (1 - (data.commissionFactoring / commissionFactoringFinal)) * 100;
-    let dailyInterestRate = (data.spreadRate / 365) / 100;
+    let euriborSpread = euribor + spreadRate;
+    let dailyInterestRate = (euriborSpread / 365) / 100;
     let totalInterest = (microFactoringValue * dailyInterestRate) * data.longTerm;
     let totalPricing = commissionFactoringFinal + debtorAnalysisCommission + totalInterest;
     let totalReduce = data.commissionFactoring + debtorAnalysisCommission + totalInterest;
