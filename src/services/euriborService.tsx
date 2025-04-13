@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-const fetchEuriborData = async () => {
+const fetchEuriborData = async () => {debugger
     const euriborConfig = {
         method: 'GET',
-        url: 'https://euribor.p.rapidapi.com/all',
+        url: 'https://euribor.p.rapidapi.com',
         headers: {
           'X-RapidAPI-Key': '3681f95efamsha14f3d48fd9b6afp1b35b5jsnb129096e0376',
           'X-RapidAPI-Host': 'euribor.p.rapidapi.com'

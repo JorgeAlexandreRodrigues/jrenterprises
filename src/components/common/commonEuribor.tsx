@@ -44,7 +44,7 @@ const CommonEuribor: React.FC<CommonEuriborProps> = ({ data, setData }) => {
                 onChange={handleChange}
             >
                 {Object.entries(euriborOptions).map(([months, rate]) => (
-                    <MenuItem key={months} value={rate}>{months.replace("months", " ")}Meses</MenuItem>
+                    <MenuItem key={months} value={rate}>{months.replace("months", " ")}</MenuItem>
                 ))}
             </Select>
         </FormControl>

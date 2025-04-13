@@ -35,7 +35,7 @@ interface ResultProps {
     };
 }
 
-const Result: React.FC<ResultProps> = ({ data }) => {
+const Result: React.FC<ResultProps> = ({ data }) => {debugger
     const { amountLivranca, processingCommission, spreadRate, longTerm, euribor } = data;
     let processingCommissionFinal = Math.max(amountLivranca * 0.006, 60);
     let processingCommissionReduction = (1 - (data.processingCommission / processingCommissionFinal)) * 100;
