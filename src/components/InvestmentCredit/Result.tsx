@@ -29,18 +29,21 @@ interface ResultProps {
     vF: number;
     eM: number;
     cG: number;
+    cGI: number
     // Add other properties if necessary
   };
 }
 
 const Result: React.FC<ResultProps> = ({ data }) => {
-  const { vF, eM, cG } = data;
+  const { vF, eM, cG, cGI } = data;
   let eMFinal = Math.max(vF * 0.005, 600);
   let eMReduction = (1 - (data.eM / eMFinal)) * 100
   let cGFinal = Math.max(vF * 0.02, 210);
   let cGReduction = (1 - (data.cG / cGFinal)) * 100
-  let totalP = eMFinal + cGFinal;
-  let totalR = data.eM + data.cG;
+  let cGIFinal = Math.max(vF*0.0225, 500)
+  let cGIReduction = (1 - (data.cGI / cGIFinal)) * 100
+  let totalP = eMFinal + cGFinal + cGIFinal;
+  let totalR = data.eM + data.cG + data.cGI;
 
   const options = {
     responsive: true,
@@ -55,19 +58,19 @@ const Result: React.FC<ResultProps> = ({ data }) => {
     },
   };
 
-  const labels = ['Estrutura e Montagem', 'Comissão Gestão', 'Total'];
+  const labels = ['Estrutura e Montagem', 'Comissão Gestão Inicial','Comissão Gestão', 'Total'];
 
   const verticalBarsdata = {
     labels,
     datasets: [
       {
         label: 'Preçário',
-        data: [eMFinal, cGFinal, totalP],
+        data: [eMFinal, cGFinal, cGIFinal, totalP],
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
       },
       {
         label: 'Redução Preçário',
-        data: [data.eM, data.cG, totalR],
+        data: [data.eM, data.cG, data.cGI, totalR],
         backgroundColor: 'rgba(75, 192, 192, 0.5)'
       },
     ],
@@ -79,7 +82,13 @@ const Result: React.FC<ResultProps> = ({ data }) => {
         % Redução Estrutura e Montagem = {eMReduction.toFixed(2)} %
       </Typography>
       <Typography textAlign={'center'} >
+        % Redução Comissão Gestão Inicial {cGIReduction.toFixed(2)} %
+      </Typography>
+      <Typography textAlign={'center'} >
         % Redução Comissão Gestão {cGReduction.toFixed(2)} %
+      </Typography>
+      <Typography textAlign={'center'}>
+        Total Preçario = {totalP.toFixed(2)} €
       </Typography>
       <Typography textAlign={'center'}>
         Total Redução = {(totalP - totalR).toFixed(2)} €

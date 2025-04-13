@@ -8,7 +8,8 @@ const InvestimentCredit = () => {
   const [data, setData] = useState({
     vF: 50000,
     eM: 600,
-    cG: 1000
+    cG: 1000,
+    cGI: 1125
   })
   return (
     <Grid container spacing={5} alignItems='center'>
